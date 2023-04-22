@@ -1,5 +1,5 @@
 ---
-title: "MSW x Aspida で型安全な API モックを定義する"
+title: "MSW x Aspida で型安全な API モックを実装する"
 emoji: "🧩"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["TypeScript", "msw", "aspida"]
