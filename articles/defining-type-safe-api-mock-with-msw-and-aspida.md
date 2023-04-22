@@ -141,7 +141,9 @@ export const handlers = [
 
 ## 型推論の流れを追い、より良い実装を検討する
 比較的簡単な実装にしたもののやはり多少複雑なので、理解を深めるために型推論の流れを追ってみます。
-私自身あまり型推論の流れを追う経験がなかったので、 [TypeScriptの型推論詳説](https://qiita.com/uhyo/items/6acb7f4ee73287d5dac0) を参考にさせていただきました。
+私自身あまり型推論の流れを追う経験がなかったので、TypeScriptの型推論詳説を参考にさせていただきました。
+
+https://qiita.com/uhyo/items/6acb7f4ee73287d5dac0
 
 さて、以下のように `createHandler` を呼び出した場合を考えてみます。
 
