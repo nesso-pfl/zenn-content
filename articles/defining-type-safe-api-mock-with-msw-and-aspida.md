@@ -133,7 +133,7 @@ export const handlers = [
 また、`R` (Response) 型引数は MSW の `ctx.json` 関数にフィットさせるため `R extends DefaultBodyType` としています。
 `Record` 型の中身の `$${M}` はぱっと見ややこしいかもしれませんが、
 
-- `` `${M}` `` 例えば `M` が `'get'` であれば`'get'` という型になる「テンプレートリテラル型」
+- `` `${M}` `` は、例えば `M` が `'get'` であれば`'get'` となるテンプレートリテラル型
 - `` `$${M}` `` ならば `'$get'` という型になる
 
 という風になっています。
@@ -141,7 +141,7 @@ export const handlers = [
 
 ## 型推論の流れを追い、より良い実装を検討する
 比較的簡単な実装にしたもののやはり多少複雑なので、理解を深めるために型推論の流れを追ってみます。
-私自身あまり型推論の流れを追う経験がないので、 [TypeScriptの型推論詳説](https://qiita.com/uhyo/items/6acb7f4ee73287d5dac0) を参考にさせていただきました。
+私自身あまり型推論の流れを追う経験がなかったので、 [TypeScriptの型推論詳説](https://qiita.com/uhyo/items/6acb7f4ee73287d5dac0) を参考にさせていただきました。
 
 さて、以下のように `createHandler` を呼び出した場合を考えてみます。
 
@@ -205,8 +205,8 @@ const createHandler = <
   })
 
   createHandler(apiClient.sample, 'post', { id: 'omg', name: 'foo' })
-                                         // ^^
-                                         // ここに出るようになった
+                                            ^^
+                                            ここに出るようになった
 ```
 
 これも、以下のコードを例に推論の流れを追ってみます。
@@ -216,7 +216,7 @@ const createHandler = <
 ```
 
 1. `method` 引数に `get` が渡されていることにより、 `M` 型が `'get'` と推論される
-2. `path` 引数に `apiClient.sample` が渡されていることにより、 `Api` 型が以下のように推論される
+2. `path` 引数に `apiClient.sample` が渡されていることにより、 `Api` 型が以下のように推論される（はず...）
     ```ts
     {
       $path: () => string
@@ -229,7 +229,8 @@ const createHandler = <
     3. `Promise<User[]>` から `S` が `User[]` であることが分かる
 4. `response` 引数が `User[]` と推論される
 
-となるはずです。
+となるはずですが、正直自信がないので間違えていたらご指摘お願いします。
+一旦雰囲気は掴めるかなと思います。
 これで、エラーの出る位置が改善されました。
 
 ## 自分が普段使っているテンプレートの紹介
@@ -239,7 +240,6 @@ const createHandler = <
 ```ts:handler.ts
 import { DefaultBodyType, PathParams, rest } from 'msw'
 import { apiClient } from '~/utils/apiClient'
-import dayjs from 'dayjs'
 import { AxiosRequestConfig } from 'axios'
 
 type Method = keyof typeof rest
