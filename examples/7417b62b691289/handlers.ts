@@ -24,4 +24,6 @@ export const handlers = [
   createHandler(apiClient.sample, 'post', { id: 1, name: 'foo' }),
   // @ts-expect-error User 型でないのでエラー
   createHandler(apiClient.sample, 'post', { id: 'omg', name: 'foo' }),
+  // @ts-expect-error もちろん存在しないメソッドを指定した場合もエラー
+  createHandler(apiClient.sample, 'put'),
 ]

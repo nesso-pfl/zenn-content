@@ -10,7 +10,6 @@ export type Methods = DefineMethods<{
     query?: {
       limit: number
     }
-
     resBody: User[]
   }
 
@@ -18,7 +17,6 @@ export type Methods = DefineMethods<{
     reqBody: {
       name: string
     }
-
     resBody: User
   }
 }>
