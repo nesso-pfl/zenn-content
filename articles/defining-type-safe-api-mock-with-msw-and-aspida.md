@@ -3,7 +3,7 @@ title: "MSW x Aspida で型安全な API モックを定義する"
 emoji: "🧩"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["TypeScript", "msw", "aspida"]
-published: false
+published: true
 ---
 
 MSW と Aspida を組み合わせたときに、API のパスやメソッドに応じてレスポンスの型を推論させる方法を紹介します。
