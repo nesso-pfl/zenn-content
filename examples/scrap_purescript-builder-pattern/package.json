@@ -1,0 +1,12 @@
+{
+  "name": "scrap_purescript-builder-pattern",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "purescript": "0.14.5"
+  },
+  "dependencies": {
+    "auth0-js": "^9.20.2"
+  }
+}
